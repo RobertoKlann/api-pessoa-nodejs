@@ -57,7 +57,7 @@ $ npm install
 # Vá para a pasta database e edite o arquivo index.js com as suas configurações do Banco de Dados
 $ cd src/database
 
-# Execute o script de criação das tabelas do BD
+# Execute o script de criação das tabelas do BD. OBS(Não pode existir uma tabela tbpessoa e tbendereco, se existir o SQL vai dar erro)
 $ node src/database/createTables.js
 
 # Execute a aplicação em modo de desenvolvimento
