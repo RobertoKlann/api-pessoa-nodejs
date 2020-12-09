@@ -1,17 +1,17 @@
-//Importando pacotes
+//importando pacotes
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
-//Criando aplicação
+//criando aplicação
 const app = express();
 
-//Setando confs
+//setando confs
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 
 require('./src/controllers/pessoaController')(app);
 
-//Fazer o servidor rodar
+//iniciando o servidor
 app.listen(5000);

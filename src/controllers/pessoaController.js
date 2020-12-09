@@ -3,6 +3,9 @@ const db = require('../database/index');
 
 const router = express.Router();
 
+/**
+ * Rota de cadastro das pessoas e endereços
+ */
 router.post('/store', async (req, res) => {
     try {
 
@@ -47,6 +50,9 @@ router.post('/store', async (req, res) => {
     }
 });
 
+/**
+ * Rota de consulta das pessoas
+ */
 router.get('/get', async (req, res) => {
     try {
 
@@ -54,6 +60,25 @@ router.get('/get', async (req, res) => {
         let result = await db.query(`
             SELECT *
               FROM tbpessoa
+        `);
+
+        return res.status(200).send({data: result.rows});
+    } catch(err) {
+        return res.status(400).send({message: err.message});
+    }
+});
+
+/**
+ * Rota de consulta dos endereços da pessoa
+ */
+router.get('/enderecos', async (req, res) => {
+    try {
+
+        //executando a query de SELECT
+        let result = await db.query(`
+            SELECT *
+              FROM tbendereco
+             WHERE pescodigo = ${req.query.codigo_pessoa}
         `);
 
         return res.status(200).send({data: result.rows});
