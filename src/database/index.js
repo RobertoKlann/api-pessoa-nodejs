@@ -2,7 +2,7 @@
 const pg = require('pg');
 
 //Parametros para a conexão
-const client = new pg.Client({
+const client = new pg.Pool({
     user: 'postgres',
     host: 'localhost',
     database: 'postgres',

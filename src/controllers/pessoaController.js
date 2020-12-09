@@ -5,7 +5,6 @@ const router = express.Router();
 
 router.post('/store', async (req, res) => {
     try {
-        await db.connect();
 
         //pegando os parametros que vieram do frontend
         const { pesnome, pestipo, pescpfcnpj, pestelefone, pesemail, enderecos} = req.body;
@@ -42,8 +41,6 @@ router.post('/store', async (req, res) => {
             `);
         }
 
-        await db.end();
-
         return res.status(200).send({message: 'Registro inserido com sucesso!'});
     } catch(err) {
         return res.status(400).send({message: 'Não foi possível incluir o registro!'});
@@ -52,7 +49,6 @@ router.post('/store', async (req, res) => {
 
 router.get('/get', async (req, res) => {
     try {
-        await db.connect();
 
         //executando a query de SELECT
         let result = await db.query(`
@@ -60,11 +56,9 @@ router.get('/get', async (req, res) => {
               FROM tbpessoa
         `);
 
-        await db.end();
-
         return res.status(200).send({data: result.rows});
     } catch(err) {
-        return res.status(400).send({message: 'Não foi possível buscar os registros!'});
+        return res.status(400).send({message: err.message});
     }
 });
 
