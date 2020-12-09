@@ -54,7 +54,7 @@ $ cd api-pessoa-nodejs
 # Instale as dependências
 $ npm install
 
-# Vá para a pasta src/database e edite o arquivo index.js com as suas configurações do Banco de Dados
+# Vá para a pasta database e edite o arquivo index.js com as suas configurações do Banco de Dados
 $ cd src/database
 
 # Execute o script de criação das tabelas do BD
